@@ -2,7 +2,7 @@
 require("includes/config.php");
 require("includes/head.php");
 
-$MaKH = $_POST['MaKH'];
+$makh = $_POST['makh'];
 $tenkhtim = $_POST['tenkhtim'];
 
 date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -17,7 +17,7 @@ if(isset($_POST['ok'])){
 		echo "<div class='loithe'><img src='images/error.png' width='20px' height='20px'/> Vui Lòng Chọn Khách Hàng</div>";
 	}else{
 		if($makh != ''){
-			mysql_query("insert into hoadon(NgayGhi, MaKH) values('$time', '$MaKH')");
+			mysql_query("insert into hoadon(NgayGhi, MaKH) values('$time', '$makh')");
 			echo "<div class='loithe'> Thêm Hóa Đơn ".$next_increment." Thành Công :)</div>";
 		}
 	}
@@ -61,7 +61,7 @@ function xacnhan(){
 
 <form action="hoa-don.php" method="post" enctype="multipart/form-data">
 	<div class="field" id="searchform">
-	  <input type="text" name="tenkhtim" placeholder="Nhập Tên Khách Hàng Cần Tìm?" />
+	  <input type="text" name="tenkhtim"  />
 	  <button type="submit" name="oktim">Tìm Kiếm</button>
 	</div>
 </form>
@@ -93,7 +93,7 @@ function xacnhan(){
 		while($data=mysql_fetch_assoc($query)){
 			echo "<tr>";
 				echo "<td>$data[MaHD]</td>";
-				echo "<td>".date('H:i:s', $data[NgayTao])."<br/>".date('d-m-Y', $data[NgayTao])."</td>";
+				echo "<td>".date('H:i:s', $data[NgayGhi])."<br/>".date('d-m-Y', $data[NgayGhi])."</td>";
 				echo "<td>$data[TenKH]</td>";
 				echo "<td><a href='sua-hoa-don.php?mahd=$data[MaHD]'>Sửa</a></td>";
 				echo "<td><a href='xoa-hoa-don.php?mahd=$data[MaHD]' onclick='return xacnhan();'>Xóa</a></td>";
