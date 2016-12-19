@@ -46,7 +46,7 @@ if(isset($_POST['ok'])){
 				$sql2="select * from hoadon inner join khachhang on hoadon.MaKH=khachhang.MaKH";
 				$query2=mysql_query($sql2);
 				while($data2=mysql_fetch_assoc($query2)){
-					echo "<option value='$data2[MaHD]'>(".date('H:i:s', $data2[NgayTao])." ".date('d-m', $data2[NgayTao]).") $data2[TenKH]</option>";	
+					echo "<option value='$data2[MaHD]'>(".date('H:i:s', $data2[NgayGhi])." ".date('d-m', $data2[NgayGhi]).") $data2[TenKH]</option>";	
 				}
 			?>
 		</select> 
@@ -88,7 +88,7 @@ function xacnhan(){
 
 <form action="chi-tiet-hoa-don.php" method="post" enctype="multipart/form-data">
 	<div class="field" id="searchform">
-	  <input type="text" name="tenkhtim" placeholder="Nhập Tên Khách Hàng Cần Tìm?" />
+	  <input type="text" name="tenkhtim"  />
 	  <button type="submit" name="oktim">Tìm Kiếm</button>
 	</div>
 </form>
